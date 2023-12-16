@@ -16,8 +16,8 @@ public class FrontMatterComparisonController {
     FrontMatterComparisonService frontMatterComparisonService;
     @PostMapping("/comparator")
     public ResponseEntity<List<String>> processPDF(
-            @RequestPart("oldPdfFIle") MultipartFile pdfFile1,
-            @RequestPart("newPdfFile") MultipartFile pdfFile2) {
+            @RequestPart("oldRevisionFile") MultipartFile pdfFile1,
+            @RequestPart("currentRevisionFile") MultipartFile pdfFile2) {
         try {
             Optional<List<String>> oldFile = frontMatterComparisonService.readPDF(pdfFile1);
             Optional<List<String>> newFile = frontMatterComparisonService.readPDF(pdfFile2);
@@ -29,7 +29,7 @@ public class FrontMatterComparisonController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             return new ResponseEntity<>(output.get(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
 }
