@@ -165,13 +165,13 @@ public class FrontMatterComparisonService {
                 SubTopic newSubTopic = newSubTopicList.get(k);
                 if(oldSubTopic.subject.equals(newSubTopic.subject)){
                     if(!oldSubTopic.pageNumber.equals(newSubTopic.pageNumber)){
-                        ans.add("Add Revbar for : " + newPageBlock.pageBlockName+ " "+ newSubTopic.number+". "+ newSubTopic.subject
-                                +" Page number got changed from " + oldSubTopic.pageNumber+" to "+newSubTopic.pageNumber);
+                        ans.add("Add Revbar for {" + newPageBlock.pageBlockName+ "} <"+ newSubTopic.number+"> ("+ newSubTopic.subject
+                                +") Page number got changed from " + oldSubTopic.pageNumber+" to "+newSubTopic.pageNumber);
                     }
                 }
                 else{
-                    ans.add("Add Revbar for : " + newPageBlock.pageBlockName+ ": Title Description changed from "+ oldSubTopic.number+". "+
-                            oldSubTopic.subject +" to " + newSubTopic.number+". "+newSubTopic.subject);
+                    ans.add("Add Revbar for {" + newPageBlock.pageBlockName+ "} Title Description changed from "+ oldSubTopic.number+". "+
+                            oldSubTopic.subject +" to <" + newSubTopic.number+"> ("+newSubTopic.subject +")");
                 }
                 ArrayList<SubSubTopic> oldSubSubTopicList = oldSubTopic.subSubTopicList;
                 ArrayList<SubSubTopic> newSubSubTopicList = newSubTopic.subSubTopicList;
@@ -183,23 +183,23 @@ public class FrontMatterComparisonService {
                     SubSubTopic newSubSubTopic = newSubSubTopicList.get(m);
                     if(oldSubSubTopic.subject.equals(newSubSubTopic.subject)){
                         if(!oldSubSubTopic.pageNumber.equals(newSubSubTopic.pageNumber)){
-                            ans.add("Add Revbar for : "+ newPageBlock.pageBlockName+ " "+ newSubTopic.number+". " +
-                                    " "+newSubSubTopic.number+". "+newSubSubTopic.subject
-                                    +" : Page number got changed from " + oldSubSubTopic.pageNumber+" to "+newSubSubTopic.pageNumber);
+                            ans.add("Add Revbar for {"+ newPageBlock.pageBlockName+ "} <"+ newSubTopic.number+"> (" +newSubTopic.subject+
+                                    ") |"+newSubSubTopic.number+"| ["+newSubSubTopic.subject
+                                    +"] Page number got changed from " + oldSubSubTopic.pageNumber+" to "+newSubSubTopic.pageNumber);
                         }
                     }
                     else{
-                        ans.add("Add Revbar for : "+ newPageBlock.pageBlockName+ " "+ newSubTopic.number+". "+
-                                " : Title Description changed from "+ oldSubSubTopic.number+". "+
-                                oldSubSubTopic.subject +" to " + newSubSubTopic.number+". "+newSubSubTopic.subject);
+                        ans.add("Add Revbar for {"+ newPageBlock.pageBlockName+ "} <"+ newSubTopic.number+"> (" +newSubTopic.subject+
+                                ") Title Description changed from "+ oldSubSubTopic.number+". "+
+                                oldSubSubTopic.subject +" to |" + newSubSubTopic.number+"| ("+newSubSubTopic.subject + ")");
                     }
                     l++;
                     m++;
                 }
                 while(m<y){
                     SubSubTopic newSubSubTopic = newSubSubTopicList.get(m);
-                    ans.add("Add Revbar for : newly added title "+ newPageBlock.pageBlockName+ " "+ newSubTopic.number+". "
-                            + newSubSubTopic.number+". "+ newSubSubTopic.subject);
+                    ans.add("Add Revbar for newly added title {"+ newPageBlock.pageBlockName+ "} <"+ newSubTopic.number+"> ("+
+                            newSubTopic.subject+ ") |"+ newSubSubTopic.number+"| ["+ newSubSubTopic.subject+ "]");
                     m++;
                 }
                 j++;
@@ -207,14 +207,14 @@ public class FrontMatterComparisonService {
             }
             while(k<newLen){
                 SubTopic newSubTopic = newSubTopicList.get(k);
-                ans.add("Add Revbar for : newly added title "+ newPageBlock.pageBlockName+ " "+ newSubTopic.number+". "
-                        + newSubTopic.subject);
+                ans.add("Add Revbar for newly added title {"+ newPageBlock.pageBlockName+ "} <"+ newSubTopic.number+"> ("
+                        + newSubTopic.subject + ")");
                 ArrayList<SubSubTopic> newSubSubTopicList = newSubTopic.subSubTopicList;
                 int len = newSubSubTopicList.size();
                 for(int t=0; t<len; t++){
                     SubSubTopic newSubSubTopic = newSubSubTopicList.get(t);
-                    ans.add("Add Revbar for : newly added title "+ newPageBlock.pageBlockName+ " "+ newSubTopic.number+". "
-                            + newSubSubTopic.number+". "+ newSubSubTopic.subject);
+                    ans.add("Add Revbar for newly added title {"+ newPageBlock.pageBlockName+ "} <"+ newSubTopic.number+"> ("
+                            +newSubTopic.subject + ") |"+ newSubSubTopic.number+"| ["+ newSubSubTopic.subject + "]");
                 }
                 k++;
             }
